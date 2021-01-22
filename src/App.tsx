@@ -1,26 +1,53 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { connect } from 'react-redux';
+import { bindActionCreators, Dispatch } from 'redux';
+import Actions from './actions';
+import { RootState } from './reducers';
+import { AuthState } from './types/auth';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+interface Props {
+  auth: AuthState,
+  actions: typeof Actions
 }
 
-export default App;
+interface State {
+
+}
+
+function mapStateToProps(state: RootState) {
+  return {
+    auth: state.auth
+  };
+}
+
+function mapDispatchToProps(dispatch: Dispatch) {
+  return {
+    actions: bindActionCreators(Actions, dispatch),
+  };
+}
+
+class App extends React.Component<Props, State> {
+  constructor(props: Props) {
+    super(props)
+    this.state = {}
+  }
+  setAuth = () => {
+    const { actions } = this.props
+    let auth = {
+      user: { username: 'admin' },
+      logged: true,
+      token: '00000'
+    }
+    actions.changeAuthAction(auth)
+  }
+  render() {
+    console.log('this.props :>> ', this.props);
+    return (
+      <div>
+        <button onClick={() => this.setAuth()}>Set Auth</button>
+      </div>
+    );
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
