@@ -43,7 +43,7 @@ class App extends React.Component<Props, State> {
   render() {
     console.log('this.props :>> ', this.props);
     return (
-      <div>
+      <div className="app">
         <button onClick={() => this.setAuth()}>Set Auth</button>
       </div>
     );
