@@ -14,6 +14,7 @@ import MuiAlert from '@material-ui/lab/Alert';
 import { USER_TOKEN } from '../../utils/localStorage';
 import AuthApi from '../../apis/auth';
 import Header from '../../components/Header';
+import Sidebar from '../../components/Sidebar';
 
 interface Props {
   store: RootState,
@@ -99,39 +100,50 @@ class AppContainer extends React.Component<Props, State> {
           <Grid item xs={12}>
             <Grid container justify="center">
               <Grid item xs={12}>
-                {isReady
-                  ? (
-                    <Switch>
-                      {routes.auth.length > 0 && routes.auth.map((route: any, index: number) => (
-                        <Route
-                          key={index}
-                          path={route.path}
-                          exact={route.exact}
-                          component={route.component}
-                        />
-                      ))}
-                      {routes.public.length > 0 && routes.public.map((route: any, index: number) => (
-                        <Route
-                          key={index}
-                          path={route.path}
-                          exact={route.exact}
-                          component={route.component}
-                        />
-                      ))}
-                      {routes.private.length > 0 && routes.private.map((route: any, index: number) => (
-                        <Route
-                          key={index}
-                          path={route.path}
-                          exact={route.exact}
-                          component={auth.logged ? route.component : routes.auth[0].component}
-                        />
-                      ))}
-                      <Redirect from="/" to={auth.logged ? routes.private[0].path : routes.auth[0].path} />
-                    </Switch>
-                  )
-                  : (
-                    <Preloader />
+                <Grid container>
+                  {auth.logged && (
+                    <Grid item>
+                      <div className="desktop-section">
+                        <Sidebar />
+                      </div>
+                    </Grid>
                   )}
+                  <Grid item xs>
+                    {isReady
+                      ? (
+                        <Switch>
+                          {routes.auth.length > 0 && routes.auth.map((route: any, index: number) => (
+                            <Route
+                              key={index}
+                              path={route.path}
+                              exact={route.exact}
+                              component={route.component}
+                            />
+                          ))}
+                          {routes.public.length > 0 && routes.public.map((route: any, index: number) => (
+                            <Route
+                              key={index}
+                              path={route.path}
+                              exact={route.exact}
+                              component={route.component}
+                            />
+                          ))}
+                          {routes.private.length > 0 && routes.private.map((route: any, index: number) => (
+                            <Route
+                              key={index}
+                              path={route.path}
+                              exact={route.exact}
+                              component={auth.logged ? route.component : routes.auth[0].component}
+                            />
+                          ))}
+                          <Redirect from="/" to={auth.logged ? routes.private[0].path : routes.auth[0].path} />
+                        </Switch>
+                      )
+                      : (
+                        <Preloader />
+                      )}
+                  </Grid>
+                </Grid>
               </Grid>
             </Grid>
           </Grid>

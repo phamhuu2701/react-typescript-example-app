@@ -42,7 +42,6 @@ function mapDispatchToProps(dispatch: Dispatch) {
   };
 }
 
-
 class Login extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props)

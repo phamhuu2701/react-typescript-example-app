@@ -8,10 +8,12 @@
   .MuiTextField-root {
     max-width: 600px;
   }
-  
-  .MuiSvgIcon-root {
-    cursor: pointer;
-    fill: $noteColor;
+
+  .MuiFormControl-root {
+    .MuiSvgIcon-root {
+      cursor: pointer;
+      fill: $noteColor;
+    }
   }
 
   .header-item {
@@ -22,5 +24,13 @@
 
   .header-item:hover {
     background-color: $highLightColor;
+  }
+
+  .header-menu-icon {
+    .MuiButtonBase-root {
+      max-width: 40px;
+      max-height: 40px;
+      overflow: hidden;
+    }
   }
 }

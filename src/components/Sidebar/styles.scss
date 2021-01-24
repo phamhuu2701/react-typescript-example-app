@@ -1,0 +1,28 @@
+@import './../../globalStyles/variables.scss';
+
+.sidebar {
+  width: 240px;
+  min-width: 240px;
+  max-width: 240px;
+  border-right: $border;
+
+  .MuiListItemIcon-root {
+    min-width: 32px;
+  }
+
+  .MuiCollapse-container {
+    .MuiButtonBase-root {
+      padding-left: 48px;
+    }
+  }
+
+  .Mui-selected {
+    .MuiSvgIcon-root {
+      fill: $primaryColor;
+    }
+
+    .MuiListItemText-root {
+      color: $primaryColor;
+    }
+  }
+}
