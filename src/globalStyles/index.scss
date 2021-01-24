@@ -56,4 +56,35 @@ b {
 .MuiPaper-root {
   padding: $padding;
 }
+
+.MuiAvatar-root__small {
+  img {
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    overflow: hidden;
+    object-fit: cover;
+  }
+}
+
+.MuiAvatar-root,
+.MuiAvatar-root__medium {
+  img {
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    overflow: hidden;
+    object-fit: cover;
+  }
+}
+
+.MuiAvatar-root__Large {
+  img {
+    width: 3em;
+    height: 3em;
+    border-radius: 50%;
+    overflow: hidden;
+    object-fit: cover;
+  }
+}
 // END MATERIAL UI CUSTOM

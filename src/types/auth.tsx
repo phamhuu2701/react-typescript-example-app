@@ -2,7 +2,7 @@ export const CHANGE_AUTH = 'CHANGE_AUTH'
 export const USER_LOGOUT = 'USER_LOGOUT'
 
 export interface AuthState {
-  user: object,
+  user: object | any,
   logged: boolean,
   token: string
 }

@@ -159,29 +159,31 @@ class Register extends React.Component<Props, State> {
       });
     }
   };
-  handleLoginFacebookResponse = async (response: object) => {
-    const { actions, history } = this.props;
-    let res = await AuthApi.loginFacebook({ fb: JSON.stringify(response) });
-    if (res.success) {
-      actions.changeAuthAction({
-        user: res.payload.user,
-        token: res.payload.token,
-        logged: true,
-      });
-      USER_TOKEN.set(res.payload.token);
-      return history.push('/');
-    } else {
-      actions.showNotificationAction({
-        show: true,
-        variant: 'error',
-        content: res.error.message,
-      });
-      actions.changeAuthAction({
-        user: {},
-        token: '',
-        logged: false,
-      });
-      USER_TOKEN.delete();
+  handleLoginFacebookResponse = async (response: object | any) => {
+    if (response.status !== 'unknown') {
+      const { actions, history } = this.props;
+      let res = await AuthApi.loginFacebook({ fb: JSON.stringify(response) });
+      if (res.success) {
+        actions.changeAuthAction({
+          user: res.payload.user,
+          token: res.payload.token,
+          logged: true,
+        });
+        USER_TOKEN.set(res.payload.token);
+        return history.push('/');
+      } else {
+        actions.showNotificationAction({
+          show: true,
+          variant: 'error',
+          content: res.error.message,
+        });
+        actions.changeAuthAction({
+          user: {},
+          token: '',
+          logged: false,
+        });
+        USER_TOKEN.delete();
+      }
     }
   };
   handleGoogleLoginSuccess = async (response: object) => {

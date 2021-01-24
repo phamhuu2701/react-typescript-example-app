@@ -13,6 +13,7 @@ import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 import { USER_TOKEN } from '../../utils/localStorage';
 import AuthApi from '../../apis/auth';
+import Header from '../../components/Header';
 
 interface Props {
   store: RootState,
@@ -54,10 +55,8 @@ class AppContainer extends React.Component<Props, State> {
     const { auth, actions } = this.props;
     if (!auth.logged) {
       const userToken = USER_TOKEN.get();
-      console.log('userToken :>> ', userToken);
       if (userToken) {
         const res = await AuthApi.getUserByToken();
-        console.log('res :>> ', res);
         if (res.success) {
           actions.changeAuthAction({
             user: res.payload,
@@ -92,6 +91,11 @@ class AppContainer extends React.Component<Props, State> {
     return (
       <div>
         <Grid container>
+          {auth.logged && (
+            <Grid item xs={12}>
+              <Header />
+            </Grid>
+          )}
           <Grid item xs={12}>
             <Grid container justify="center">
               <Grid item xs={12}>

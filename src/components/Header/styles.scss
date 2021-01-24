@@ -1,0 +1,26 @@
+@import './../../globalStyles/variables.scss';
+
+.header {
+  .MuiPaper-root {
+    padding: $paddingSmall;
+  }
+
+  .MuiTextField-root {
+    max-width: 600px;
+  }
+  
+  .MuiSvgIcon-root {
+    cursor: pointer;
+    fill: $noteColor;
+  }
+
+  .header-item {
+    padding: 0 $paddingSmall;
+    border-radius: $borderRadius;
+    cursor: pointer;
+  }
+
+  .header-item:hover {
+    background-color: $highLightColor;
+  }
+}
