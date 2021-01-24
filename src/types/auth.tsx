@@ -16,4 +16,4 @@ export interface UserLogoutAction {
   type: typeof USER_LOGOUT
 }
 
-export type AuthActions = AuthAction | UserLogoutAction
+export type AuthActions = AuthAction | UserLogoutAction // | AnotherAction

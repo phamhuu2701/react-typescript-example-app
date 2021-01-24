@@ -1,0 +1,9 @@
+export const CONFIG = {
+  ENV: process.env.REACT_APP_ENV,
+  PORT: process.env.REACT_APP_PORT,
+  HOST: process.env.REACT_APP_HOST,
+  SERVER_DOMAIN: process.env.REACT_APP_HOST,
+  API_BASE_URL: process.env.REACT_APP_API_BASE_URL,
+  FACEBOOK_APP_ID: process.env.REACT_APP_FACEBOOK_APP_ID,
+  GOOGLE_CLIENT_ID: process.env.REACT_APP_GOOGLE_CLIENT_ID,
+};
